@@ -5,13 +5,13 @@ let resultado = document.querySelector('#resultado');
 let btnCopiar = document.querySelector('#btnCopiar');
 let texto = document.querySelector('#texto');
 
-texto.addEventListener('keyup', function(){
- 
+// Validar que solo se pueda ingresar minusculas y letas sin tilde
+texto.addEventListener('keyup', () => { 
     texto.value = validarTexto(texto);
 });
 
 // Encriptar
-btnEncriptar.addEventListener('click', function(e) {
+btnEncriptar.addEventListener('click', (e) => {
     e.preventDefault();
 
     let texto = document.querySelector('#texto').value;
@@ -20,7 +20,7 @@ btnEncriptar.addEventListener('click', function(e) {
 })
 
 // Desencriptar
-btnDesencriptar.addEventListener('click', function(e) {
+btnDesencriptar.addEventListener('click', (e) => {
     e.preventDefault();
    
     let texto = document.querySelector('#texto').value;          
@@ -29,9 +29,15 @@ btnDesencriptar.addEventListener('click', function(e) {
 })
 
 // Copiar al portapapeles
-btnCopiar.addEventListener('click', function(e) {
+btnCopiar.addEventListener('click', (e) => {
     e.preventDefault();
     navigator.clipboard.writeText(resultado.innerHTML);
+    let msg = document.querySelector('.msg');
+    msg.classList.add('show');
+    setTimeout(() => {
+        msg.classList.remove('show');
+    } , 1000);
+
 })
 
 function validarTexto(texto){
@@ -39,8 +45,8 @@ function validarTexto(texto){
 }
 
 function encriptar(texto){
-    var encriptado = '';
-    for (var i = 0; i < texto.length; i++) {
+    let encriptado = '';
+    for (let i = 0; i < texto.length; i++) {
         switch (texto[i]) {
             case 'e':
                 encriptado += 'enter';

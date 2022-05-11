@@ -15,7 +15,7 @@ footer {
     font-weight: 500;
     color: #fff;
     font-family: 'Roboto', sans-serif;
-    padding-top: 20px;
+    padding: 20px 0;
 }
 
 header {
@@ -204,6 +204,26 @@ textarea {
     background-color: #0a4871;
     color: #fff;
 }
+
+.msg {
+    visibility: hidden;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 10px;
+    background: #0a38714f;
+    padding: 10px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.msg.show {   
+    visibility: visible;  
+}
+
+
 
 @media(max-width: 1156px){
     .izquierda, .derecha{
