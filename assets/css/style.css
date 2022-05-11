@@ -225,6 +225,11 @@ textarea {
 
 
 @media(max-width: 1156px){
+
+    body {
+        background-attachment: initial;
+    }
+
     .izquierda, .derecha{
         flex-basis: 100%;
         width: 100%;
