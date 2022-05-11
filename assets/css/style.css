@@ -58,7 +58,7 @@ header {
     display: block;
     background: #fff;
     width: calc(100% - 40px);
-    height: 55vh;
+    height: 45vh;
     padding: 20px;
     border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -79,7 +79,7 @@ header {
 }
 
 #resultado img {
-    width: calc(100% - 40px);
+    width: 200px;
 }
 
 #btnCopiar.btn {
@@ -94,7 +94,7 @@ span {
 
 textarea {
     display: block;
-    height: 50vh;
+    height: 40vh;
     border: none;
     resize: none;
     font-size: 1.2rem;
@@ -162,8 +162,7 @@ textarea {
 }
 .fa-info-circle {
     font-size: 1.2rem;
-    color: #0a4871;
-    /* bounce */
+    color: #fff;
     -webkit-animation: bounce 2s infinite;
     -moz-animation: bounce 2s infinite;
     -ms-animation: bounce 2s infinite;
@@ -242,10 +241,6 @@ textarea {
         width: calc(100% - 80px);
     }
 
-    #resultado img {
-        width: unset;
-    }
-
     #btnCopiar.btn {
         text-align: center;
         margin-top: 20px;
@@ -261,7 +256,7 @@ textarea {
     }
 }
 
-@media(max-width: 401px){
+@media(max-width: 420px){
     #resultado {
         overflow-x: hidden;
     }
