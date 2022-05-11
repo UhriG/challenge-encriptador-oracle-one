@@ -1,17 +1,47 @@
 
-var btnEncriptar = document.querySelector('#btnEncriptar');
-var btnDesencriptar = document.querySelector('#btnDesencriptar');
-var resultado = document.querySelector('#resultado');
-var btnCopiar = document.querySelector('#btnCopiar');
+let btnEncriptar = document.querySelector('#btnEncriptar');
+let btnDesencriptar = document.querySelector('#btnDesencriptar');
+let resultado = document.querySelector('#resultado');
+let btnCopiar = document.querySelector('#btnCopiar');
+let texto = document.querySelector('#texto');
+
+texto.addEventListener('keyup', function(){
+ 
+    texto.value = validarTexto(texto);
+});
 
 // Encriptar
 btnEncriptar.addEventListener('click', function(e) {
     e.preventDefault();
 
-    var textoD = document.querySelector('#texto').value;
+    let texto = document.querySelector('#texto').value;
+    
+    resultado.innerHTML = encriptar(texto);
+})
+
+// Desencriptar
+btnDesencriptar.addEventListener('click', function(e) {
+    e.preventDefault();
+   
+    let texto = document.querySelector('#texto').value;          
+    resultado.innerHTML = desencriptar(texto);
+
+})
+
+// Copiar al portapapeles
+btnCopiar.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigator.clipboard.writeText(resultado.innerHTML);
+})
+
+function validarTexto(texto){
+  return  texto.value.toLowerCase().replace(/[áàâã]/g, 'a').replace(/[éèê]/g, 'e').replace(/[íìî]/g, 'i').replace(/[óòôõ]/g, 'o').replace(/[úùû]/g, 'u');
+}
+
+function encriptar(texto){
     var encriptado = '';
-    for (var i = 0; i < textoD.length; i++) {
-        switch (textoD[i]) {
+    for (var i = 0; i < texto.length; i++) {
+        switch (texto[i]) {
             case 'e':
                 encriptado += 'enter';
                 break;
@@ -28,31 +58,21 @@ btnEncriptar.addEventListener('click', function(e) {
                 encriptado += 'ufat';
                 break;
             default:
-                encriptado += textoD[i];
+                encriptado += texto[i];
                 break;
         }
     }
-    resultado.innerHTML = encriptado;
-})
 
-// Desencriptar
-btnDesencriptar.addEventListener('click', function(e) {
-    e.preventDefault();
-   
-    var textoE = document.querySelector('#texto').value;    
+    return encriptado;
+}
 
-    textoE = textoE.replace(/enter/g, 'e');
-    textoE = textoE.replace(/imes/g, 'i');
-    textoE = textoE.replace(/ai/g, 'a');
-    textoE = textoE.replace(/ober/g, 'o');
-    textoE = textoE.replace(/ufat/g, 'u');  
+function desencriptar(texto){
+    texto = texto.replace(/enter/g, 'e');
+    texto = texto.replace(/imes/g, 'i');
+    texto = texto.replace(/ai/g, 'a');
+    texto = texto.replace(/ober/g, 'o');
+    texto = texto.replace(/ufat/g, 'u');
 
-    resultado.innerHTML = textoE;
+    return texto;
+}
 
-})
-
-// Copiar al portapapeles
-btnCopiar.addEventListener('click', function(e) {
-    e.preventDefault();
-    navigator.clipboard.writeText(resultado.innerHTML);
-})
