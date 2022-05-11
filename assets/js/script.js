@@ -31,20 +31,26 @@ btnDesencriptar.addEventListener('click', (e) => {
 // Copiar al portapapeles
 btnCopiar.addEventListener('click', (e) => {
     e.preventDefault();
+
     navigator.clipboard.writeText(resultado.innerHTML);
+   
+    texto.value = '';
+
     let msg = document.querySelector('.msg');
+
     msg.classList.add('show');
+
     setTimeout(() => {
         msg.classList.remove('show');
     } , 1000);
 
 })
 
-function validarTexto(texto){
+const validarTexto = (texto) => {
   return  texto.value.toLowerCase().replace(/[áàâã]/g, 'a').replace(/[éèê]/g, 'e').replace(/[íìî]/g, 'i').replace(/[óòôõ]/g, 'o').replace(/[úùû]/g, 'u');
 }
 
-function encriptar(texto){
+const encriptar = (texto) => {
     let encriptado = '';
     for (let i = 0; i < texto.length; i++) {
         switch (texto[i]) {
@@ -72,7 +78,7 @@ function encriptar(texto){
     return encriptado;
 }
 
-function desencriptar(texto){
+const desencriptar = (texto) => {
     texto = texto.replace(/enter/g, 'e');
     texto = texto.replace(/imes/g, 'i');
     texto = texto.replace(/ai/g, 'a');
